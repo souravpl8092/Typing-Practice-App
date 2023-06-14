@@ -2,13 +2,12 @@ import React from "react";
 import { useRef, useEffect, useState } from "react";
 import { LuTimerReset } from "react-icons/lu";
 
-const TypingTest = () => {
+const TypingPractice = () => {
   const keyboardRef = useRef();
   const [inputChar, setInputChar] = useState("");
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
   const [timer, setTimer] = useState(300);
-  const [word, setWord] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [seconds, setSeconds] = useState(300);
@@ -29,7 +28,6 @@ const TypingTest = () => {
     setCorrectCount(0);
     setIncorrectCount(0);
     setIsTimeover(false);
-    setWord(0);
   };
 
   // Callback function for timeover event and stops the timer and ends the typing test.
@@ -47,7 +45,7 @@ const TypingTest = () => {
     setCorrectCount(0);
     setIncorrectCount(0);
     setIsTimeover(false);
-    setWord(0);
+    setIsPaused(false);
   };
 
   // Pauses the typing test.
@@ -108,8 +106,6 @@ const TypingTest = () => {
       }
       setRandomKey(keys[newRandom]);
       setCorrectCount(correctCount + 1);
-      const time = Math.ceil((300 - timer) / 60);
-      setWord(Math.ceil(correctCount + 1 / time));
       return;
     }
     setIncorrectCount(incorrectCount + 1);
@@ -164,21 +160,19 @@ const TypingTest = () => {
 
   return (
     <div>
-      <h1 className="header">Typing Test</h1>
+      <h1 className="header">Typing Practice App</h1>
       <div className="score-board">
         <div className="Timer-box">
           {isRunning === true ? (
             <h3
               className="start-btn"
               style={{
-                backgroundColor: "blue",
+                backgroundColor: isPaused === false ? "blue" : "gray",
                 border:
-                  isRunning === true && isPaused === false
-                    ? "4px solid white"
-                    : "2px solid #555",
+                  isRunning === true ? "4px solid white" : "2px solid #555",
               }}
             >
-              {formatTime(timer)}
+              Time Remaining: {formatTime(timer)}
             </h3>
           ) : (
             <h3
@@ -192,7 +186,7 @@ const TypingTest = () => {
                     : "2px solid #555",
               }}
             >
-              Start : 00:00
+              Start
             </h3>
           )}
           <select
@@ -255,7 +249,7 @@ const TypingTest = () => {
           <h3 className="incorrect-count">Incorrect : {incorrectCount}</h3>
         </div>
         <div>
-          <h3>WPM : {word}</h3>
+          <h3>Total keys pressed : {correctCount + incorrectCount}</h3>
         </div>
         <div>
           <h3>Accuracy: {accuracy} %</h3>
@@ -270,7 +264,7 @@ const TypingTest = () => {
       </h1>
 
       <div className="keyboard">
-        {isRunning === true ? (
+        {isRunning === true && isPaused === false ? (
           <input
             className="input"
             value={inputChar}
@@ -282,100 +276,47 @@ const TypingTest = () => {
         ) : (
           <input
             className="input"
-            value={inputChar}
-            ref={keyboardRef}
             disabled
+            style={{ border: "1px solid white" }}
           />
         )}
         <br />
         {isTimeover === true && <h1 className="Time-out">Time Over!</h1>}
         <ul className="row row-1">
-          <div className={getClassName("q")} id="Q">
-            q
-          </div>
-          <div className={getClassName("w")} id="W">
-            w
-          </div>
-          <div className={getClassName("e")} id="E">
-            e
-          </div>
-          <div className={getClassName("r")} id="R">
-            r
-          </div>
-          <div className={getClassName("t")} id="T">
-            t
-          </div>
-          <div className={getClassName("y")} id="Y">
-            y
-          </div>
-          <div className={getClassName("u")} id="U">
-            u
-          </div>
-          <div className={getClassName("i")} id="I">
-            i
-          </div>
-          <div className={getClassName("o")} id="O">
-            o
-          </div>
-          <div className={getClassName("p")} id="P">
-            p
-          </div>
+          <div className={getClassName("q")}>q</div>
+          <div className={getClassName("w")}>w</div>
+          <div className={getClassName("e")}>e</div>
+          <div className={getClassName("r")}>r</div>
+          <div className={getClassName("t")}>t</div>
+          <div className={getClassName("y")}>y</div>
+          <div className={getClassName("u")}>u</div>
+          <div className={getClassName("i")}>i</div>
+          <div className={getClassName("o")}>o</div>
+          <div className={getClassName("p")}>p</div>
           <div className={getClassName("[")}>[</div>
           <div className={getClassName("]")}>]</div>
         </ul>
         <ul className="row row-2">
-          <div className={getClassName("a")} id="A">
-            a
-          </div>
-          <div className={getClassName("s")} id="S">
-            s
-          </div>
-          <div className={getClassName("d")} id="D">
-            d
-          </div>
-          <div className={getClassName("f")} id="F">
-            f
-          </div>
-          <div className={getClassName("g")} id="G">
-            g
-          </div>
-          <div className={getClassName("h")} id="H">
-            h
-          </div>
-          <div className={getClassName("j")} id="J">
-            j
-          </div>
-          <div className={getClassName("k")} id="K">
-            k
-          </div>
-          <div className={getClassName("l")} id="L">
-            l
-          </div>
+          <div className={getClassName("a")}>a</div>
+          <div className={getClassName("s")}>s</div>
+          <div className={getClassName("d")}>d</div>
+          <div className={getClassName("f")}>f</div>
+          <div className={getClassName("g")}>g</div>
+          <div className={getClassName("h")}>h</div>
+          <div className={getClassName("j")}>j</div>
+          <div className={getClassName("k")}>k</div>
+          <div className={getClassName("l")}>l</div>
           <div className={getClassName(";")}>;</div>
           <div className={getClassName("'")}>'</div>
         </ul>
         <ul className="row row-3">
-          <div className={getClassName("z")} id="Z">
-            z
-          </div>
-          <div className={getClassName("x")} id="X">
-            x
-          </div>
-          <div className={getClassName("c")} id="C">
-            c
-          </div>
-          <div className={getClassName("v")} id="V">
-            v
-          </div>
-          <div className={getClassName("b")} id="B">
-            b
-          </div>
-          <div className={getClassName("n")} id="N">
-            n
-          </div>
-          <div className={getClassName("m")} id="M">
-            m
-          </div>
+          <div className={getClassName("z")}>z</div>
+          <div className={getClassName("x")}>x</div>
+          <div className={getClassName("c")}>c</div>
+          <div className={getClassName("v")}>v</div>
+          <div className={getClassName("b")}>b</div>
+          <div className={getClassName("n")}>n</div>
+          <div className={getClassName("m")}>m</div>
           <div className={getClassName(",")}>,</div>
           <div className={getClassName(".")}>.</div>
           <div className={getClassName("/")}>/</div>
@@ -390,4 +331,4 @@ const TypingTest = () => {
   );
 };
 
-export default TypingTest;
+export default TypingPractice;

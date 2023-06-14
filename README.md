@@ -1,22 +1,22 @@
-<h1 align="center"> Typing Test </h1>
+<h1 align="center"> Typing Practice App</h1>
 
 <br/>
 
 <h2>Overview</h2>
  
-### This is a Typing Test application built using React. It allows users to test their typing speed and accuracy by providing random keys to type within a specified time duration.
+### This is a Typing Test application built using React that focuses on keys practice. It allows users to practice typing the 8 keys of the keyboard: a, s, d, f, j, k, l, and semicolon (;). The application provides a timed typing test to assess your typing speed and accuracy for these specific keys.
 
 <br/>
 
 <table>
 <tr>
     <td>
-      <h2 align="center">Before Typing Test Started</h2>
+      <h2 align="center">Before Typing Practice App Started</h2>
     </td>
   </tr>
   <tr>
     <td>
-      <img src="https://i.imgur.com/Vc1Yk0P.png" alt="Before Typing Test Started">
+      <img src="https://i.imgur.com/csaolLN.png" alt="Before Typing Practice App Started">
     </td>
   </tr>
 </table>
@@ -24,12 +24,12 @@
 <table>
 <tr>
     <td>
-      <h2 align="center">After Typing Test Started</h2>
+      <h2 align="center">After Typing Practice App Started</h2>
     </td>
   </tr>
   <tr>
     <td>
-      <img src="https://i.imgur.com/v0xam7e.png" alt="After Typing Test started">
+      <img src="https://i.imgur.com/mmrNhmb.png" alt="After Typing Practice App started">
     </td> 
   </tr>
 </table>
@@ -61,7 +61,7 @@
 ### 1. Clone the repository and install the dependencies:
 
 - git clone https://github.com/souravpl8092/Typing-Practice-App
-- cd typing-test
+- cd typing-practice-app
 - npm install
 
 ### 2. Start the development server:
@@ -83,7 +83,7 @@
 │
 └── src
     ├── Components
-    │   └── TypingTest.jsx
+    │   └── TypingPractice.jsx
     │
     ├── App.js
     ├── App.css

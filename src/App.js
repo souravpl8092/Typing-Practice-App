@@ -1,10 +1,10 @@
 import "./App.css";
-import TypingTest from "./Components/TypingTest";
+import TypingPractice from "./Components/TypingPractice";
 
 export default function App() {
   return (
     <div className="App">
-      <TypingTest />
+      <TypingPractice />
     </div>
   );
 }
