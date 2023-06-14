@@ -1,0 +1,265 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom, #000, #222);
+  color: #faf9f6;
+  padding: 0;
+  margin: 0;
+  font-family: Rufina;
+  transition: all 0.25s linear;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  position: relative;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 3%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  background: none;
+  color: #faf9f6;
+  font-size: 22px;
+  padding: 1%;
+}
+
+h3 {
+  margin-right: 10px;
+}
+
+.score-board {
+  display: flex;
+  gap: 2;
+  justify-content: space-between;
+}
+
+.current-key {
+  background: blue;
+  padding: 0.5% 2%;
+  border-radius: 5px;
+}
+
+.Timer-box {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  display: block;
+}
+
+.btn-box {
+  display: flex;
+}
+.start-btn {
+  height: 2em;
+  width: 12em;
+  color: #faf9f6;
+  font-family: Rufina;
+  border-radius: 0.4em;
+  line-height: 2em;
+  letter-spacing: 1px;
+  margin: 0.4em;
+  transition: 0.3s;
+  text-align: center;
+  font-size: 1.2em;
+  background-color: linear-gradient(to bottom, #000, #222);
+  border: 2px solid #555;
+  margin: auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.restart-btn {
+  height: 2em;
+  width: 5em;
+  color: #faf9f6;
+  font-family: Rufina;
+  border-radius: 0.4em;
+  line-height: 2em;
+  letter-spacing: 1px;
+  margin: 0.4em;
+  transition: 0.3s;
+  text-align: center;
+  font-size: 1.2em;
+  background-color: linear-gradient(to bottom, #000, #222);
+  border: 2px solid #555;
+  margin: auto;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.restart-btn:hover,
+.start-btn:hover {
+  transform: scale(1.18);
+  transition: 0.3s;
+}
+
+select {
+  height: 2em;
+  width: 10em;
+  color: #faf9f6;
+  font-family: Rufina;
+  border-radius: 0.4em;
+  line-height: 2em;
+  letter-spacing: 1px;
+  margin: 0.4em;
+  transition: 0.3s;
+  text-align: center;
+  font-size: 1.2em;
+  background: linear-gradient(to bottom, #000, #222);
+  border: 2px solid #555;
+  margin: auto;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+option {
+  color: black;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.row {
+  list-style: none;
+  display: flex;
+}
+
+.row-1 {
+  padding-left: 0em;
+}
+
+.row-2 {
+  padding-left: 0.25em;
+}
+
+.row-3 {
+  padding-left: 0.5em;
+}
+
+.row-4 {
+  padding-left: 0em;
+}
+
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 0.25em;
+  margin-block-end: 0.25em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
+}
+
+.Time-out {
+  width: 100%;
+  text-align: center;
+  color: red;
+  font-size: 40px;
+}
+
+.SPACEKEY {
+  height: 3em;
+  width: 21em;
+  color: #faf9f6;
+  font-family: Rufina;
+  border-radius: 0.4em;
+  line-height: 3em;
+  letter-spacing: 1px;
+  margin: 0.4em;
+  transition: 0.3s;
+  text-align: center;
+  font-size: 1em;
+  background-color: linear-gradient(to bottom, #000, #222);
+  border: 2px solid #555;
+  opacity: 0.8;
+}
+
+.UNITKEY {
+  height: 2em;
+  width: 2em;
+  color: rgba(0, 0, 0, 0.7);
+  border-radius: 0.4em;
+  line-height: 2em;
+  letter-spacing: 1px;
+  margin: 0.4em;
+  transition: 0.3s;
+  text-align: center;
+  font-size: 1.5em;
+  font-family: Rufina;
+  background-color: linear-gradient(to bottom, #000, #222);
+  border: 2px solid #555;
+  opacity: 1;
+  color: #faf9f6;
+  opacity: 0.8;
+}
+
+.VIBRATE {
+  background-color: #555;
+  -webkit-animation: vibrate-1 0.8s linear infinite both;
+  animation: vibrate-1 0.8s linear infinite both;
+}
+
+.VIBRATE-ERROR {
+  background-color: red;
+  -webkit-animation: vibrate-1 0.2s linear infinity both;
+  animation: vibrate-1 0.2s linear infinity both;
+}
+
+.NOVIBRATE-CORRECT {
+  background-color: #555;
+}
+
+.CorrectKeyDowns {
+  color: inherit;
+}
+.IncorrectKeyDowns {
+  color: red;
+}
+
+@keyframes vibrate-1 {
+  0% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+  20% {
+    -webkit-transform: translate(-2px, 2px);
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    -webkit-transform: translate(-2px, -2px);
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    -webkit-transform: translate(2px, 2px);
+    transform: translate(2px, 2px);
+  }
+  80% {
+    -webkit-transform: translate(2px, -2px);
+    transform: translate(2px, -2px);
+  }
+  100% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+}
