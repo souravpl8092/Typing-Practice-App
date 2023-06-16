@@ -1,6 +1,7 @@
 import React from "react";
 import { useRef, useEffect, useState } from "react";
 import { LuTimerReset } from "react-icons/lu";
+import soundFile from "../sound/sound.mp3";
 
 const TypingPractice = () => {
   const keyboardRef = useRef();
@@ -12,6 +13,7 @@ const TypingPractice = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [seconds, setSeconds] = useState(300);
   const [isTimeover, setIsTimeover] = useState(300);
+  const [sound, setSound] = useState(null);
 
   // Calculates the accuracy percentage of typing test.
   const accuracy =
@@ -32,6 +34,7 @@ const TypingPractice = () => {
 
   // Callback function for timeover event and stops the timer and ends the typing test.
   const timeover = () => {
+    setInputChar("");
     setTimer(0);
     setIsPaused(false);
     setIsRunning(false);
@@ -40,6 +43,7 @@ const TypingPractice = () => {
 
   // Resets all the stats and stops the typing test.
   const resetStats = () => {
+    setInputChar("");
     setIsRunning(false);
     setTimer(0);
     setCorrectCount(0);
@@ -58,6 +62,14 @@ const TypingPractice = () => {
     setIsPaused(false);
   };
 
+  // Play sound after pressing the wrong key
+  const playsound = () => {
+    if (sound) {
+      sound.currentTime = 0;
+      sound.play();
+    }
+  };
+
   useEffect(() => {
     let intervalId;
     if (isRunning && !isPaused) {
@@ -69,6 +81,20 @@ const TypingPractice = () => {
       clearInterval(intervalId);
     };
   }, [isRunning, isPaused]);
+
+  // Load the audio files
+  useEffect(() => {
+    const loadAudioFiles = async () => {
+      try {
+        const soundObj = new Audio(soundFile);
+        await soundObj.load();
+        setSound(soundObj);
+      } catch (error) {
+        console.error("Failed to load audio files:", error);
+      }
+    };
+    loadAudioFiles();
+  }, []);
 
   useEffect(() => {
     keyboardRef.current && keyboardRef.current.focus();
@@ -109,6 +135,7 @@ const TypingPractice = () => {
       return;
     }
     setIncorrectCount(incorrectCount + 1);
+    playsound();
     event.preventDefault();
     return;
   };
@@ -276,6 +303,7 @@ const TypingPractice = () => {
         ) : (
           <input
             className="input"
+            value={inputChar}
             disabled
             style={{ border: "1px solid white" }}
           />
